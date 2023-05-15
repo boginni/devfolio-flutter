@@ -2,6 +2,7 @@ import 'package:folio/configs/configs.dart';
 import 'package:folio/utils/about_utils.dart';
 import 'package:folio/utils/utils.dart';
 import 'package:folio/utils/work_utils.dart';
+import 'package:folio/widget/card_logo.dart';
 
 import 'package:folio/widget/custom_text_heading.dart';
 import 'package:universal_html/html.dart' as html;
@@ -26,31 +27,36 @@ class AboutTab extends StatelessWidget {
         children: [
           const Center(
             child: CustomSectionHeading(
-              text: '\nAbout Me',
+              text: AboutUtils.resjHeadLine,
             ),
           ),
           const Center(
             child: CustomSectionSubHeading(
-              text: 'Get to know me :)',
+              text: AboutUtils.resjSubtitle,
             ),
           ),
           Space.y1!,
-          Image.asset(
-            StaticUtils.mobilePhoto,
-            height: height * 0.27,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CardLogo(size: 75, font: .5),
+            ],
           ),
           SizedBox(
             height: height * 0.03,
           ),
-          Text(
-            "Who am I?",
-            style: AppText.b2!.copyWith(
-              color: AppTheme.c!.primary,
+          InkWell(
+            onTap: () => openURL(AboutUtils.link),
+            child: Text(
+              AboutUtils.labelLink,
+              style: AppText.b2!.copyWith(
+                color: AppTheme.c!.primary,
+              ),
             ),
           ),
           Space.y1!,
           Text(
-            AboutUtils.aboutMeHeadline,
+            AboutUtils.resjTitle,
             style: AppText.b2b!.copyWith(
               fontFamily: 'Montserrat',
             ),
@@ -59,7 +65,7 @@ class AboutTab extends StatelessWidget {
             height: height * 0.02,
           ),
           Text(
-            AboutUtils.aboutMeDetail,
+            AboutUtils.resjDetails,
             style: AppText.l1!.copyWith(
               height: 2,
               letterSpacing: 1.1,
@@ -86,86 +92,86 @@ class AboutTab extends StatelessWidget {
                 .toList(),
           ),
           Space.y!,
-          Divider(
-            color: Colors.grey[800],
-            thickness: AppDimensions.normalize(0.5),
-          ),
-          Space.y!,
-          Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  AboutMeData(
-                    data: "Name",
-                    information: "Muhammad Hamza",
-                  ),
-                  AboutMeData(
-                    data: "Age",
-                    information: "24",
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: width > 710 ? width * 0.2 : width * 0.05,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  AboutMeData(
-                    data: "Email",
-                    information: "hamza.6.shakeel@gmail.com",
-                  ),
-                  AboutMeData(
-                    data: "From",
-                    information: "Attock, PK",
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Space.y1!,
-          Row(
-            children: [
-              SizedBox(
-                height: AppDimensions.normalize(13),
-                width: AppDimensions.normalize(40),
-                child: OutlinedButton(
-                  onPressed: () => html.window.open(StaticUtils.resume, 'pdf'),
-                  child: const Text(
-                    "Resume",
-                  ),
-                ),
-              ),
-              Space.x!,
-              Container(
-                width: width * 0.05,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Colors.grey[900]!,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                    children: WorkUtils.logos
-                        .asMap()
-                        .entries
-                        .map(
-                          (e) => CommunityIconBtn(
-                            icon: e.value,
-                            link: WorkUtils.communityLinks[e.key],
-                            height: WorkUtils.communityLogoHeight[e.key],
-                          ),
-                        )
-                        .toList()),
-              ),
-            ],
-          )
+          // Divider(
+          //   color: Colors.grey[800],
+          //   thickness: AppDimensions.normalize(0.5),
+          // ),
+          // Space.y!,
+          // Row(
+          //   children: [
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: const [
+          //         AboutMeData(
+          //           data: "Name",
+          //           information: "Muhammad Hamza",
+          //         ),
+          //         AboutMeData(
+          //           data: "Age",
+          //           information: "24",
+          //         ),
+          //       ],
+          //     ),
+          //     SizedBox(
+          //       width: width > 710 ? width * 0.2 : width * 0.05,
+          //     ),
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: const [
+          //         AboutMeData(
+          //           data: "Email",
+          //           information: "hamza.6.shakeel@gmail.com",
+          //         ),
+          //         AboutMeData(
+          //           data: "From",
+          //           information: "Attock, PK",
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
+          // Space.y1!,
+          // Row(
+          //   children: [
+          //     SizedBox(
+          //       height: AppDimensions.normalize(13),
+          //       width: AppDimensions.normalize(40),
+          //       child: OutlinedButton(
+          //         onPressed: () => html.window.open(StaticUtils.resume, 'pdf'),
+          //         child: const Text(
+          //           "Resume",
+          //         ),
+          //       ),
+          //     ),
+          //     Space.x!,
+          //     Container(
+          //       width: width * 0.05,
+          //       decoration: BoxDecoration(
+          //         border: Border(
+          //           bottom: BorderSide(
+          //             color: Colors.grey[900]!,
+          //             width: 2.0,
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //     SingleChildScrollView(
+          //       scrollDirection: Axis.horizontal,
+          //       child: Row(
+          //           children: WorkUtils.logos
+          //               .asMap()
+          //               .entries
+          //               .map(
+          //                 (e) => CommunityIconBtn(
+          //                   icon: e.value,
+          //                   link: WorkUtils.communityLinks[e.key],
+          //                   height: WorkUtils.communityLogoHeight[e.key],
+          //                 ),
+          //               )
+          //               .toList()),
+          //     ),
+          //   ],
+          // )
         ],
       ),
     );

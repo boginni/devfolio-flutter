@@ -11,7 +11,7 @@ class StaticUtils {
 
   // photos
   static const String mobilePhoto = 'assets/photos/mobile.png';
-  static const String coloredPhoto = 'assets/photos/colored.png';
+  static const String coloredPhoto = 'assets/photos/resj-login.png';
   static const String blackWhitePhoto = 'assets/photos/black-white.png';
 
   // work
@@ -34,16 +34,15 @@ class StaticUtils {
     "https://img.icons8.com/android/480/ffffff/twitter.png",
     "https://img.icons8.com/metro/308/ffffff/linkedin.png",
     "https://img.icons8.com/material-rounded/384/ffffff/github.png",
-    "https://img.icons8.com/ios-filled/500/ffffff/medium-monogram--v1.png"
+    // "https://img.icons8.com/ios-filled/500/ffffff/medium-monogram--v1.png"
   ];
 
   static const List<String> socialLinks = [
-    "https://facebook.com/mhmzdev",
-    "https://instagram.com/mhmzdev",
-    "https://twitter.com/mhmzdev",
-    "https://linkedin.com/in/mhmzdev",
-    "https://github.com/mhmzdev",
-    "https://mhmzdev.medium.com"
+    "https://facebook.com/",
+    "https://instagram.com/",
+    "https://twitter.com/",
+    "https://linkedin.com/in/",
+    "https://github.com/",
   ];
 
   static const String resume =
@@ -57,7 +56,7 @@ class BodyUtils {
     HomePage(),
     About(),
     Services(),
-    Portfolio(),
+    // Portfolio(),
     Contact(),
     Footer(),
   ];

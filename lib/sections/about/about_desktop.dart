@@ -25,10 +25,10 @@ class AboutDesktop extends StatelessWidget {
       child: Column(
         children: [
           const CustomSectionHeading(
-            text: '\nAbout Me',
+            text: AboutUtils.resjHeadLine,
           ),
           const CustomSectionSubHeading(
-            text: 'Get to know me :)',
+            text: AboutUtils.resjSubtitle,
           ),
           Space.y1!,
           Row(
@@ -46,22 +46,25 @@ class AboutDesktop extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Who am I?',
-                        style: AppText.b1!.copyWith(
-                          color: AppTheme.c!.primary,
+                      InkWell(
+                        onTap: () => openURL(AboutUtils.link),
+                        child: Text(
+                          AboutUtils.labelLink,
+                          style: AppText.b1!.copyWith(
+                            color: AppTheme.c!.primary,
+                          ),
                         ),
                       ),
                       Space.y1!,
                       Text(
-                        AboutUtils.aboutMeHeadline,
+                        AboutUtils.resjTitle,
                         style: AppText.b1b!.copyWith(
                           fontFamily: 'Montserrat',
                         ),
                       ),
                       Space.y!,
                       Text(
-                        AboutUtils.aboutMeDetail,
+                        AboutUtils.resjDetails,
                         style: AppText.b2!.copyWith(
                           height: 2,
                           letterSpacing: 1.1,
@@ -77,7 +80,7 @@ class AboutDesktop extends StatelessWidget {
                       ),
                       Space.y!,
                       Text(
-                        'Technologies I have worked with:',
+                        AboutUtils.developedWith,
                         style: AppText.l1!.copyWith(
                           color: AppTheme.c!.primary,
                         ),
@@ -91,73 +94,73 @@ class AboutDesktop extends StatelessWidget {
                             .toList(),
                       ),
                       Space.y!,
-                      Divider(
-                        color: Colors.grey[800],
-                        thickness: AppDimensions.normalize(0.5),
-                      ),
-                      Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              AboutMeData(
-                                data: "Name",
-                                information: "Muhammad Hamza",
-                              ),
-                              AboutMeData(
-                                data: "Age",
-                                information: "24",
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              AboutMeData(
-                                data: "Email",
-                                information: "hamza.6.shakeel@gmail.com",
-                              ),
-                              AboutMeData(
-                                data: "From",
-                                information: "Attock, PK",
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                      // Divider(
+                      //   color: Colors.grey[800],
+                      //   thickness: AppDimensions.normalize(0.5),
+                      // ),
+                      // Row(
+                      //   children: [
+                      //     Column(
+                      //       crossAxisAlignment: CrossAxisAlignment.start,
+                      //       children: const [
+                      //         AboutMeData(
+                      //           data: "Name",
+                      //           information: "Muhammad Hamza",
+                      //         ),
+                      //         AboutMeData(
+                      //           data: "Age",
+                      //           information: "24",
+                      //         ),
+                      //       ],
+                      //     ),
+                      //     const Spacer(),
+                      //     Column(
+                      //       crossAxisAlignment: CrossAxisAlignment.start,
+                      //       children: const [
+                      //         AboutMeData(
+                      //           data: "Email",
+                      //           information: "hamza.6.shakeel@gmail.com",
+                      //         ),
+                      //         AboutMeData(
+                      //           data: "From",
+                      //           information: "Attock, PK",
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ],
+                      // ),
                       Space.y1!,
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: AppDimensions.normalize(13),
-                            width: AppDimensions.normalize(40),
-                            child: OutlinedButton(
-                              onPressed: () =>
-                                  html.window.open(StaticUtils.resume, 'pdf'),
-                              child: const Text(
-                                "Resume",
-                              ),
-                            ),
-                          ),
-                          Space.x1!,
-                          Container(
-                            color: Colors.grey[900]!,
-                            width: AppDimensions.normalize(30),
-                            height: AppDimensions.normalize(0.5),
-                          ),
-                          ...WorkUtils.logos.asMap().entries.map(
-                                (e) => Expanded(
-                                  child: CommunityIconBtn(
-                                    icon: e.value,
-                                    link: WorkUtils.communityLinks[e.key],
-                                    height:
-                                        WorkUtils.communityLogoHeight[e.key],
-                                  ),
-                                ),
-                              )
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     // SizedBox(
+                      //     //   height: AppDimensions.normalize(13),
+                      //     //   width: AppDimensions.normalize(40),
+                      //     //   child: OutlinedButton(
+                      //     //     onPressed: () =>
+                      //     //         html.window.open(StaticUtils.resume, 'pdf'),
+                      //     //     child: const Text(
+                      //     //       "Resume",
+                      //     //     ),
+                      //     //   ),
+                      //     // ),
+                      //     // Space.x1!,
+                      //     Container(
+                      //       color: Colors.grey[900]!,
+                      //       width: AppDimensions.normalize(30),
+                      //       height: AppDimensions.normalize(0.5),
+                      //     ),
+                      //     ...WorkUtils.logos.asMap().entries.map(
+                      //           (e) => Expanded(
+                      //             child: CommunityIconBtn(
+                      //               icon: e.value,
+                      //               link: WorkUtils.communityLinks[e.key],
+                      //               height:
+                      //                   WorkUtils.communityLogoHeight[e.key],
+                      //             ),
+                      //           ),
+                      //         )
+                      //   ],
+                      // ),
                     ],
                   ),
                 ),

@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:folio/animations/entrance_fader.dart';
 import 'package:folio/configs/configs.dart';
 import 'package:folio/utils/utils.dart';
+import 'package:folio/widget/card_logo.dart';
 
 import 'package:folio/widget/social_links.dart';
+
+import '../../utils/home_utils.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -14,27 +17,22 @@ class HomeTab extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: size.height * 1.02,
+      height: size.height * 0.60,
       child: Stack(
         children: [
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: Opacity(
-              opacity: 0.9,
-              child: EntranceFader(
-                offset: const Offset(0, 0),
-                delay: const Duration(seconds: 1),
-                duration: const Duration(milliseconds: 800),
-                child: Image.asset(
-                  StaticUtils.blackWhitePhoto,
-                  height: size.width < 1200
-                      ? size.height * 0.75
-                      : size.height * 0.85,
-                ),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   bottom: AppDimensions.normalize(100),
+          //   right: AppDimensions.normalize(10),
+          //   child: const EntranceFader(
+          //     offset: Offset(0, 0),
+          //     delay: Duration(seconds: 1),
+          //     duration: Duration(milliseconds: 800),
+          //     child: CardLogo(
+          //       font: 0.5,
+          //       size: 75,
+          //     ),
+          //   ),
+          // ),
           Container(
             margin: EdgeInsets.fromLTRB(
               AppDimensions.normalize(30),
@@ -49,7 +47,7 @@ class HomeTab extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'WELCOME TO MY PORTFOLIO! ',
+                      HomeUtils.homeHeadline1,
                       style: AppText.b2!.copyWith(
                         fontFamily: 'Montserrat',
                       ),
@@ -67,16 +65,16 @@ class HomeTab extends StatelessWidget {
                 ),
                 Space.y1!,
                 Text(
-                  "Muhammad",
-                  style: AppText.h1!.copyWith(
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w100,
+                  HomeUtils.homeHeadline2,
+                  style: AppText.h1b!.copyWith(
+                    height: 1,
                   ),
                 ),
                 Text(
-                  "Hamza",
-                  style: AppText.h1b!.copyWith(
-                    height: 1,
+                  HomeUtils.homeHeadline3,
+                  style: AppText.h1!.copyWith(
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w100,
                   ),
                 ),
                 EntranceFader(
@@ -91,21 +89,11 @@ class HomeTab extends StatelessWidget {
                       ),
                       AnimatedTextKit(
                         animatedTexts: [
-                          TyperAnimatedText(
-                            ' Flutter Developer',
-                            speed: const Duration(milliseconds: 50),
-                            textStyle: AppText.b1,
-                          ),
-                          TyperAnimatedText(
-                            ' UI/UX Enthusiast',
-                            speed: const Duration(milliseconds: 50),
-                            textStyle: AppText.b1,
-                          ),
-                          TyperAnimatedText(
-                            ' A friend :)',
-                            speed: const Duration(milliseconds: 50),
-                            textStyle: AppText.b1,
-                          ),
+                          ...HomeUtils.quotes.map((e) => TyperAnimatedText(
+                                e,
+                                speed: const Duration(milliseconds: 50),
+                                textStyle: AppText.b1,
+                              ))
                         ],
                         isRepeatingAnimation: true,
                       ),

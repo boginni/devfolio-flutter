@@ -40,6 +40,7 @@ class MyAppState extends State<MyApp> {
 
 class MaterialChild extends StatefulWidget {
   final AppProvider provider;
+
   const MaterialChild({Key? key, required this.provider}) : super(key: key);
 
   @override
@@ -62,7 +63,7 @@ class _MaterialChildState extends State<MaterialChild> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Hamza',
+      title: 'JornadaZ',
       theme: theme.themeLight,
       darkTheme: theme.themeDark,
       themeMode: widget.provider.themeMode,

@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:folio/configs/configs.dart';
 
 import 'package:folio/utils/utils.dart';
+import 'package:folio/widget/card_logo.dart';
 import 'package:folio/widget/social_links.dart';
+
+import '../../animations/entrance_fader.dart';
+import '../../utils/home_utils.dart';
 
 class HomeMobile extends StatelessWidget {
   const HomeMobile({Key? key}) : super(key: key);
@@ -13,20 +17,22 @@ class HomeMobile extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: size.height * 1.02,
+      height: size.height * 0.40,
       child: Stack(
         children: [
-          Positioned(
-            bottom: 0.0,
-            right: -AppDimensions.normalize(25),
-            child: Opacity(
-              opacity: 0.9,
-              child: Image.asset(
-                StaticUtils.blackWhitePhoto,
-                height: AppDimensions.normalize(150),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   bottom: AppDimensions.normalize(100),
+          //   right: AppDimensions.normalize(10),
+          //   child: const EntranceFader(
+          //     offset: Offset(0, 0),
+          //     delay: Duration(seconds: 1),
+          //     duration: Duration(milliseconds: 800),
+          //     child: CardLogo(
+          //       font: 0.5,
+          //       size: 75,
+          //     ),
+          //   ),
+          // ),
           Container(
             margin: EdgeInsets.fromLTRB(
               AppDimensions.normalize(10),
@@ -41,7 +47,7 @@ class HomeMobile extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "HEY THERE! ",
+                      HomeUtils.homeHeadline1,
                       style: AppText.b2!.copyWith(
                         fontFamily: 'Montserrat',
                       ),
@@ -55,16 +61,16 @@ class HomeMobile extends StatelessWidget {
                 ),
                 Space.y!,
                 Text(
-                  "Muhammad",
-                  style: AppText.h3!.copyWith(
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w100,
+                  HomeUtils.homeHeadline2,
+                  style: AppText.h3b!.copyWith(
+                    height: 1,
                   ),
                 ),
                 Text(
-                  "Hamza",
-                  style: AppText.h3b!.copyWith(
-                    height: 1,
+                  HomeUtils.homeHeadline3,
+                  style: AppText.h3!.copyWith(
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w100,
                   ),
                 ),
                 Space.y!,
@@ -76,21 +82,11 @@ class HomeMobile extends StatelessWidget {
                     ),
                     AnimatedTextKit(
                       animatedTexts: [
-                        TyperAnimatedText(
-                          ' Flutter Developer',
-                          speed: const Duration(milliseconds: 50),
-                          textStyle: AppText.b1,
-                        ),
-                        TyperAnimatedText(
-                          ' UI/UX Enthusiast',
-                          speed: const Duration(milliseconds: 50),
-                          textStyle: AppText.b1,
-                        ),
-                        TyperAnimatedText(
-                          ' A friend :)',
-                          speed: const Duration(milliseconds: 50),
-                          textStyle: AppText.b1,
-                        ),
+                        ...HomeUtils.quotes.map((e) => TyperAnimatedText(
+                              e,
+                              speed: const Duration(milliseconds: 50),
+                              textStyle: AppText.b1,
+                            ))
                       ],
                       repeatForever: true,
                       isRepeatingAnimation: true,

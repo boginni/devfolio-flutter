@@ -3,6 +3,7 @@ import 'package:folio/configs/configs.dart';
 import 'package:folio/utils/about_utils.dart';
 import 'package:folio/utils/utils.dart';
 import 'package:folio/utils/work_utils.dart';
+import 'package:folio/widget/card_logo.dart';
 
 import 'package:folio/widget/custom_text_heading.dart';
 import 'package:universal_html/html.dart' as html;
@@ -25,23 +26,25 @@ class AboutMobile extends StatelessWidget {
       child: Column(
         children: [
           const CustomSectionHeading(
-            text: '\nAbout Me',
+            text: AboutUtils.resjHeadLine,
           ),
           const CustomSectionSubHeading(
-            text: 'Get to know me :)',
+            text: AboutUtils.resjSubtitle,
           ),
           Space.y1!,
-          Image.asset(
-            StaticUtils.mobilePhoto,
-            height: height * 0.27,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CardLogo(size: 75, font: 0.5),
+            ],
           ),
           SizedBox(
             height: height * 0.03,
           ),
-          Align(
-            alignment: Alignment.centerLeft,
+          InkWell(
+            onTap: () => openURL(AboutUtils.link),
             child: Text(
-              "Who am I?",
+              AboutUtils.labelLink,
               style: AppText.b2!.copyWith(
                 color: AppTheme.c!.primary,
               ),
@@ -49,7 +52,7 @@ class AboutMobile extends StatelessWidget {
           ),
           Space.y1!,
           Text(
-            AboutUtils.aboutMeHeadline,
+            AboutUtils.resjTitle,
             style: AppText.b2b!.copyWith(
               fontFamily: 'Montserrat',
             ),
@@ -58,7 +61,7 @@ class AboutMobile extends StatelessWidget {
             height: height * 0.02,
           ),
           Text(
-            AboutUtils.aboutMeDetail,
+            AboutUtils.resjDetails,
             style: AppText.l1!.copyWith(
               height: 2,
               letterSpacing: 1.1,
@@ -72,7 +75,7 @@ class AboutMobile extends StatelessWidget {
           ),
           Space.y!,
           Text(
-            'Technologies I have worked with:',
+            AboutUtils.developedWith,
             style: AppText.l1!.copyWith(
               color: AppTheme.c!.primary,
             ),
@@ -87,44 +90,44 @@ class AboutMobile extends StatelessWidget {
                 .toList(),
           ),
           Space.y!,
-          Divider(
-            color: Colors.grey[800],
-            thickness: AppDimensions.normalize(0.5),
-          ),
-          SizedBox(
-            height: height * 0.02,
-          ),
-          const AboutMeData(
-            data: "Name",
-            information: "Muhammad Hamza",
-          ),
-          const AboutMeData(
-            data: "Email",
-            information: "hamza.6.shakeel@gmail.com",
-          ),
-          Space.y!,
-          OutlinedButton(
-              child: const Text("Resume"),
-              onPressed: () {
-                kIsWeb
-                    ? html.window.open(StaticUtils.resume, "pdf")
-                    : openURL(StaticUtils.resume);
-              }),
-          Space.y!,
-          Wrap(
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: WorkUtils.logos
-                  .asMap()
-                  .entries
-                  .map(
-                    (e) => CommunityIconBtn(
-                      icon: e.value,
-                      link: WorkUtils.communityLinks[e.key],
-                      height: WorkUtils.communityLogoHeight[e.key],
-                    ),
-                  )
-                  .toList()),
+          // Divider(
+          //   color: Colors.grey[800],
+          //   thickness: AppDimensions.normalize(0.5),
+          // ),
+          // SizedBox(
+          //   height: height * 0.02,
+          // ),
+          // const AboutMeData(
+          //   data: "Name",
+          //   information: "Muhammad Hamza",
+          // ),
+          // const AboutMeData(
+          //   data: "Email",
+          //   information: "hamza.6.shakeel@gmail.com",
+          // ),
+          // Space.y!,
+          // OutlinedButton(
+          //     child: const Text("Resume"),
+          //     onPressed: () {
+          //       kIsWeb
+          //           ? html.window.open(StaticUtils.resume, "pdf")
+          //           : openURL(StaticUtils.resume);
+          //     }),
+          // Space.y!,
+          // Wrap(
+          //     alignment: WrapAlignment.center,
+          //     crossAxisAlignment: WrapCrossAlignment.center,
+          //     children: WorkUtils.logos
+          //         .asMap()
+          //         .entries
+          //         .map(
+          //           (e) => CommunityIconBtn(
+          //             icon: e.value,
+          //             link: WorkUtils.communityLinks[e.key],
+          //             height: WorkUtils.communityLogoHeight[e.key],
+          //           ),
+          //         )
+          //         .toList()),
         ],
       ),
     );
